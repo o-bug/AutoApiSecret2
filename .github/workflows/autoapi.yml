@@ -58,10 +58,12 @@ jobs:
           git checkout -B refresh_token master
           git add refresh_token.txt
           git commit -m "update new refresh_token" -a
-      - name: Git Push
-        uses: ad-m/github-push-action@refresh_token
+      - name: GitHub Push
+        uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }} # github_token 提供
+          branch: refresh_token
+          force: true
       - name: Upload pytest test results
         uses: actions/upload-artifact@v2
         with:
