@@ -51,6 +51,17 @@ jobs:
           REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }} # refresh_token 提供
         run: |
           python refresh.py
+      - name: Git Commit #上传新的 refresh_token 到仓库
+        run: |
+          git config --global user.email m@xon.one
+          git config --global user.name o-bug
+          git checkout -B refresh_token master
+          git add refresh_token.txt
+          git commit -m "update new refresh_token" -a
+      - name: Git Push
+        uses: ad-m/github-push-action@refresh_token
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }} # github_token 提供
       - name: Upload pytest test results
         uses: actions/upload-artifact@v2
         with:
