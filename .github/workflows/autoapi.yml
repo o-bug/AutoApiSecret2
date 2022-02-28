@@ -57,7 +57,7 @@ jobs:
           git config --global user.name o-bug
           git checkout -B refresh_token master
           git add refresh_token.txt
-          git commit -m "update new refresh_token" -a
+          git commit -m "update new refresh_token"
       - name: GitHub Push
         uses: ad-m/github-push-action@v0.6.0
         with:
